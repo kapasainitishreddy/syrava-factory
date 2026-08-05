@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">Syrava emblem</title><desc id="desc">Silver Syrava warrior emblem.</desc>
+<defs>
+<linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".22" stop-color="#66707a"/><stop offset=".48" stop-color="#f4f6f8"/><stop offset=".75" stop-color="#8b949d"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<filter id="d"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000" flood-opacity=".7"/></filter>
+</defs>
+<g filter="url(#d)" fill="none" stroke="url(#s)">
+<circle cx="256" cy="286" r="128" stroke-width="18"/>
+<circle cx="256" cy="286" r="92" stroke-width="5"/>
+<path d="M256 28V468M256 28L220 92M256 28L292 92M230 140L256 182L282 140M256 468L226 420M256 468L286 420" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M108 160C80 230 91 345 174 410M404 160C432 230 421 345 338 410" stroke-width="20" stroke-linecap="round"/>
+<path d="M146 124C116 194 134 259 192 294M366 124C396 194 378 259 320 294" stroke-width="15" stroke-linecap="round"/>
+<path d="M256 194L282 286L256 378L230 286Z" fill="url(#s)" stroke-width="4"/>
+</g></svg>
