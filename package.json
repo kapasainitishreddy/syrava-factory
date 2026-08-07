@@ -7,7 +7,9 @@
     "build": "node scripts/build-website.mjs",
     "test": "node --test tests/*.test.mjs",
     "validate": "node scripts/validate-manifests.mjs",
-    "sync:catalogs": "node scripts/sync-catalogs.mjs"
+    "sync:catalogs": "node scripts/sync-catalogs.mjs",
+    "factory:v4:start": "npm --prefix apps/factory-v4 start",
+    "factory:v4:check": "npm --prefix apps/factory-v4 run check"
   },
   "engines": {
     "node": ">=20"

@@ -1,0 +1,41 @@
+name: Factory v4 CI
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "apps/factory-v4/**"
+      - "external/workflows/**"
+      - "external/agents/**"
+      - "package.json"
+      - ".github/workflows/factory-v4-ci.yml"
+  pull_request:
+    paths:
+      - "apps/factory-v4/**"
+      - "external/workflows/**"
+      - "external/agents/**"
+      - "package.json"
+permissions:
+  contents: read
+jobs:
+  verify-v4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm run factory:v4:check
+      - name: Smoke Factory v4
+        shell: bash
+        run: |
+          set -euo pipefail
+          FACTORY_V4_DATA_FILE="$RUNNER_TEMP/factory-v4-workspaces.json" HOST=127.0.0.1 PORT=4180 node apps/factory-v4/server.mjs >"$RUNNER_TEMP/factory-v4.log" 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true' EXIT
+          for _ in {1..20}; do
+            if curl -fsS http://127.0.0.1:4180/api/health >/dev/null; then break; fi
+            sleep 0.25
+          done
+          curl -fsS http://127.0.0.1:4180/api/health
+          node -e "fetch('http://127.0.0.1:4180/api/catalog').then(r=>r.json()).then(x=>{if(!x.counts || x.counts.workflows<1 || x.counts.agents<1) process.exit(1); console.log(x.counts)})"

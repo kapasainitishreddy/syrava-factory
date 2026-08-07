@@ -1,0 +1,11 @@
+{
+  "name": "@syrava/factory-v4",
+  "version": "4.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node --check server.mjs && node --check offers.mjs && node --check public/app.js"
+  }
+}
