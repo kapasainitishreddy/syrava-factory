@@ -13,6 +13,7 @@ fs.mkdirSync(dataTarget, { recursive: true });
 for (const file of ['index.html', 'styles.css', 'app.js', 'syrava-mark.svg']) {
   fs.copyFileSync(path.join(source, file), path.join(dist, file));
 }
+fs.cpSync(path.join(source, 'assistant'), path.join(dist, 'assistant'), { recursive: true });
 for (const directory of ['workflows', 'agents', 'expansion']) {
   fs.cpSync(path.join(root, 'external', directory), path.join(dataTarget, directory), { recursive: true });
 }
