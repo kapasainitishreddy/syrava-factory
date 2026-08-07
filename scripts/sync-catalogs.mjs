@@ -29,7 +29,7 @@ async function githubText(repo, file, ref = 'main') {
 async function syncWorkflows(tempDir) {
   const repo = 'kapasainitishreddy/ai-workflows-';
   const commit = await githubJson(`https://api.github.com/repos/${repo}/commits/main`);
-  const files = ['catalog-factory.mjs', ...Array.from({ length: 15 }, (_, i) => `catalog-${String(i + 1).padStart(2, '0')}.mjs`)];
+  const files = ['catalog-factory.mjs', 'catalog-expansion-factory.mjs', ...Array.from({ length: 19 }, (_, i) => `catalog-${String(i + 1).padStart(2, '0')}.mjs`)];
   const sourceDir = path.join(tempDir, 'workflows');
   await fs.mkdir(sourceDir, { recursive: true });
 
@@ -38,7 +38,7 @@ async function syncWorkflows(tempDir) {
   }
 
   const items = [];
-  for (let i = 1; i <= 15; i += 1) {
+  for (let i = 1; i <= 19; i += 1) {
     const file = path.join(sourceDir, `catalog-${String(i).padStart(2, '0')}.mjs`);
     const module = await import(`${pathToFileURL(file).href}?v=${Date.now()}-${i}`);
     const catalog = Object.values(module).find(Array.isArray);

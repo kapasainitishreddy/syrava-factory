@@ -4,13 +4,13 @@
     {
       "type": "workflow-runtime",
       "repo": "kapasainitishreddy/ai-workflows-",
-      "ref": "38d015a4ca86251c49b69a7ff02ee6d005cf4659",
+      "ref": "7a5d9019b5eec29d7d064731179acfaa1c84b618",
       "authoritative": true
     },
     {
       "type": "agent-runtime",
       "repo": "kapasainitishreddy/Ai-agents",
-      "ref": "fbc70cc5fa5f616b7a64fc70fd6fd84c59cb3d40",
+      "ref": "82cb5351f934faf3f1eac46dd4dad055f4df0dbb",
       "authoritative": true
     }
   ],
