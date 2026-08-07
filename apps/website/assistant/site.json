@@ -1,0 +1,26 @@
+{
+  "siteId": "factory",
+  "displayName": "Syrava Factory",
+  "assistantName": "Ask Factory",
+  "launcherLabel": "Ask Factory",
+  "description": "Website-specific guide to the Syrava Automation Factory catalog, voice stack, governance, and deployment boundaries.",
+  "welcome": "Ask me about Factory workflows, agents, voice adapters, governance, or how the catalog is organized.",
+  "inputPlaceholder": "Ask about Syrava Factory",
+  "knowledgeUrl": "/assistant/knowledge.json",
+  "unknownAnswer": "Factory does not provide that information on this website.",
+  "maxContextEntries": 5,
+  "theme": {"accent": "#d8e2ea", "surface": "dark"},
+  "suggestions": [
+    "What is Syrava Factory?",
+    "How many workflows and agents are available?",
+    "What voice options does Factory use?",
+    "How does governance work?"
+  ],
+  "ai": {"chrome": true, "puter": true, "deterministicFallback": true},
+  "voice": {
+    "input": true,
+    "standardTts": true,
+    "standard": {"lang": "en-US", "rate": 1, "pitch": 1},
+    "creatorVoice": {"enabled": false, "label": "Hear Nitish explain this", "disclosure": "AI-generated creator voice", "moduleUrl": ""}
+  }
+}
