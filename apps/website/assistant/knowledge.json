@@ -1,0 +1,40 @@
+{
+  "siteId": "factory",
+  "entries": [
+    {
+      "id": "factory-purpose",
+      "title": "Syrava Factory",
+      "text": "Syrava Factory is the customer-facing catalog and composition layer for Syrava's automation portfolio. It provides the website, customer-facing catalog, deployment boundaries, and integration contracts while the runtime repositories remain authoritative.",
+      "keywords": ["factory", "automation", "catalog", "composition", "portfolio", "runtime"],
+      "source": {"label": "Factory home", "href": "/"}
+    },
+    {
+      "id": "portfolio-counts",
+      "title": "Factory portfolio",
+      "text": "Factory presents 300 workflows and 50 analytical agents, for 350 currently cataloged assets, plus a 500-asset expansion blueprint consisting of 400 planned workflows and 100 planned agents.",
+      "keywords": ["300", "50", "350", "500", "workflows", "agents", "assets", "roadmap"],
+      "source": {"label": "Factory catalog", "href": "/#catalog"}
+    },
+    {
+      "id": "voice",
+      "title": "Open-source voice",
+      "text": "Factory's free-first voice adapters include faster-whisper and whisper.cpp for speech-to-text, and Piper and Kokoro for text-to-speech. Paid providers are optional fallbacks rather than default dependencies.",
+      "keywords": ["voice", "speech", "stt", "tts", "whisper", "piper", "kokoro", "transcription"],
+      "source": {"label": "Factory voice", "href": "/#voice"}
+    },
+    {
+      "id": "governance",
+      "title": "Deployment governance",
+      "text": "Factory requires customer authorization for private systems, supports schema and field discovery with confidence scoring and read-only acceptance tests, and uses fail-closed approval boundaries so high-governance systems cannot make consequential final decisions or act without qualified approval.",
+      "keywords": ["governance", "approval", "authorization", "oauth", "service accounts", "webhooks", "fail closed", "deployment"],
+      "source": {"label": "Factory governance", "href": "/#governance"}
+    },
+    {
+      "id": "tours",
+      "title": "Guided product tours",
+      "text": "Factory product tours are illustrative records that demonstrate deployment behavior through problem, evidence, approval, and handoff stages without pretending the site is connected to a customer's systems or claiming a financial return.",
+      "keywords": ["tours", "evidence", "approval", "handoff", "illustrative"],
+      "source": {"label": "Factory tours", "href": "/#tours"}
+    }
+  ]
+}
