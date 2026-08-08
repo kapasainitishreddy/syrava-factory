@@ -4,98 +4,81 @@
 
 ## Portfolio
 
+### Factory v5.1 expert catalog
+
+- **1,250 AI workflow contracts** across standard, advanced, and expert operating patterns.
+- **1,250 specialist AI-agent contracts** with evidence, authority, abstention, escalation, evaluation, and proof behavior.
+- **1,000 multilingual voice-agent contracts** covering 50 languages, including all 22 scheduled Indian languages.
+- **3,500 total v5.1 assets** across 65 operating domains.
+
+These assets are available through the v5.1 product layer as governed implementation contracts. Customer-specific connected deployments remain fail-closed until integrations, security, approvals, provider licensing, language benchmarks, and acceptance evidence pass the relevant readiness gate.
+
+### Authoritative connected runtimes
+
 - **360 workflows** synchronized from [`kapasainitishreddy/ai-workflows-`](https://github.com/kapasainitishreddy/ai-workflows-)
 - **60 analytical agents** synchronized from [`kapasainitishreddy/Ai-agents`](https://github.com/kapasainitishreddy/Ai-agents)
-- **420 currently available assets** across the two authoritative runtimes
-- **500-asset expansion blueprint**: 400 planned workflows and 100 planned agents
-- Shared open-source voice, connector, and governance packages
 
-The two runtime repositories remain authoritative. This repository vendors manifests and provides the website, customer-facing catalog, deployment boundaries, and integration contracts.
+Those two repositories remain the existing connected execution runtimes. Factory v5.1 adds the expert-scale catalog, proof/runtime contracts, readiness engine, and multilingual voice layer without silently replacing the current production site.
 
-## Factory v4 customer marketplace
+## Factory v5.1
 
-`apps/factory-v4/` is the monorepo-native customer product layer. It uses the existing vendored workflow and agent manifests rather than copying another catalog.
+The exact verified source is checksum-pinned under `vendor/factory-v5.1/`. Materialize it with:
 
-It adds:
+```bash
+npm run factory:v5:install
+npm run factory:v5:verify
+npm run factory:v5:start
+```
 
-- Outcome-first AI-team marketplace with eight productized teams.
-- Explainable team recommendation from a customer's goal.
-- Guided pilot setup with accountable owner and human approver.
-- Required-integration readiness checks.
-- Private customer workspaces with one-time access keys; only SHA-256 hashes are persisted.
-- Safe proof launches by default with no external side effects.
-- Optional connected execution through the authoritative workflow runtime.
-- Human approval retained at the runtime boundary.
+The installer verifies SHA-256 before extracting into the generated, gitignored `apps/factory-v5.1/` directory. The existing `apps/factory-v4/` remains available as a rollback/reference implementation.
 
-Run it with:
+v5.1 includes:
+
+- 3,500-asset searchable catalog.
+- Advanced and expert workflow/agent collections.
+- 50-language voice-agent marketplace.
+- Native-script Indian-language discovery and consent flows.
+- Asset-detail views with operational contracts and guardrails.
+- Fail-closed customer readiness assessment.
+- Voice deployment acceptance plans.
+- Deterministic agent proof execution.
+- Consent-first voice-session runtime.
+- Catalog/readiness/proof/voice HTTP APIs.
+- Local ledgers and bounded HTTP/security defaults.
+
+See [`docs/FACTORY_V5_1.md`](docs/FACTORY_V5_1.md).
+
+## Existing Factory v4 customer marketplace
+
+`apps/factory-v4/` remains the earlier monorepo-native outcome marketplace, with eight productized teams, explainable recommendations, guided pilot setup, required-integration readiness checks, private workspaces, proof launches, and optional connected workflow execution.
 
 ```bash
 npm run factory:v4:check
 npm run factory:v4:start
 ```
 
-Then open `http://127.0.0.1:4180`.
+## Current static deployment
 
-Connected mode requires server-side runtime configuration:
-
-```bash
-FACTORY_V4_MODE=connected
-FACTORY_WORKFLOW_RUNTIME_URL=https://your-runtime.example
-FACTORY_WORKFLOW_RUNTIME_TOKEN=<secret-manager-injected-token>
-```
-
-The current Cloudflare/static application under `apps/website/` remains unchanged, so adding v4 does not silently replace the production deployment target.
-
-## August 2026 expansion
-
-The live catalog now includes the 60-workflow Factory expansion and 10 reusable specialist agents, with public manifests pinned to the exact authoritative runtime commits. New use cases span founder operations, revenue, product engineering, customer success, finance, creator operations, workforce, education, healthcare administration, property operations, AI governance, and personal productivity.
-
-## Structure
-
-```text
-apps/website/               current factory.syrava.com static app
-apps/factory-v4/            outcome marketplace + pilot/runtime layer
-packages/workflow-catalog/  workflow manifest access
-packages/agent-catalog/     agent manifest access
-packages/voice-runtime/     free/open-source voice provider registry
-packages/connector-runtime/ OAuth and connector contracts
-packages/governance/        risk and approval policy
-external/                   chunked generated manifests and source refs
-scripts/                    sync, validation, and copy utilities
-tests/                      catalog and policy tests
-```
-
-## Commands
-
-```bash
-npm install
-npm test
-npm run validate
-npm run build
-npm run factory:v4:check
-npm run factory:v4:start
-```
-
-To refresh from private source repositories:
-
-```bash
-GH_TOKEN=<fine-grained-token> npm run sync:catalogs
-```
-
-The token must have read access to both source repositories. Do not commit it.
-
-## Deployment
-
-The current static deployment build remains:
+The Cloudflare/static application under `apps/website/` remains unchanged. Its build remains:
 
 ```bash
 npm run build
 ```
 
-with output:
+with output at `apps/website/dist`. Pushing v5.1 therefore does not silently switch `factory.syrava.com`; production migration should be deliberate after deployment credentials, authentication, providers, and customer acceptance are configured.
+
+## Repository structure
 
 ```text
-apps/website/dist
+apps/website/                 current static factory.syrava.com app
+apps/factory-v4/              earlier outcome marketplace/runtime
+apps/factory-v5.1/            generated v5.1 source after materialization
+vendor/factory-v5.1/          checksum-pinned v5.1 canonical source archive
+packages/workflow-catalog/    existing workflow manifest access
+packages/agent-catalog/       existing agent manifest access
+packages/voice-runtime/       existing voice provider registry
+packages/connector-runtime/   connector contracts
+packages/governance/          governance policy
+external/                     synchronized legacy runtime manifests
+scripts/                      build, sync, validation, v5.1 materializer
 ```
-
-The v4 app is a Node 22 runtime and should be deployed separately until the production domain is intentionally migrated from the static Cloudflare asset deployment.

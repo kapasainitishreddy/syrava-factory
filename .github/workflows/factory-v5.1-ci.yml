@@ -1,0 +1,33 @@
+name: Factory v5.1 CI
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "vendor/factory-v5.1/**"
+      - "scripts/install-factory-v5.1.mjs"
+      - "package.json"
+      - ".github/workflows/factory-v5.1-ci.yml"
+  pull_request:
+    paths:
+      - "vendor/factory-v5.1/**"
+      - "scripts/install-factory-v5.1.mjs"
+      - "package.json"
+      - ".github/workflows/factory-v5.1-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-v5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Materialize checksum-pinned source
+        run: npm run factory:v5:install
+      - name: Verify Factory v5.1
+        run: npm --prefix apps/factory-v5.1 run verify

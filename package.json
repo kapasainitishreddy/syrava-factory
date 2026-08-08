@@ -9,7 +9,11 @@
     "validate": "node scripts/validate-manifests.mjs",
     "sync:catalogs": "node scripts/sync-catalogs.mjs",
     "factory:v4:start": "npm --prefix apps/factory-v4 start",
-    "factory:v4:check": "npm --prefix apps/factory-v4 run check"
+    "factory:v4:check": "npm --prefix apps/factory-v4 run check",
+    "factory:v5:install": "node scripts/install-factory-v5.1.mjs",
+    "factory:v5:test": "node scripts/install-factory-v5.1.mjs --if-missing && npm --prefix apps/factory-v5.1 test",
+    "factory:v5:verify": "node scripts/install-factory-v5.1.mjs --force && npm --prefix apps/factory-v5.1 run verify",
+    "factory:v5:start": "node scripts/install-factory-v5.1.mjs --if-missing && npm --prefix apps/factory-v5.1 start"
   },
   "engines": {
     "node": ">=20"

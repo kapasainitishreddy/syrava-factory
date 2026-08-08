@@ -1,0 +1,27 @@
+{
+  "name": "Syrava Factory v5.1",
+  "version": "5.1.0",
+  "archive": {
+    "encoding": "base64",
+    "decodedFormat": "tar.gz",
+    "decodedBytes": 63278,
+    "sha256": "58885b5c8194a658d4d4739fa077a95f52e4d3f3c6d210286a94aefaa58de6db",
+    "parts": [
+      "part-00", "part-01", "part-02", "part-03",
+      "part-04a", "part-04b", "part-04c",
+      "part-05a", "part-05b", "part-05c",
+      "part-06", "part-07"
+    ]
+  },
+  "materializesTo": "apps/factory-v5.1",
+  "catalog": {
+    "workflows": 1250,
+    "specialistAgents": 1250,
+    "voiceAgents": 1000,
+    "totalAssets": 3500,
+    "languages": 50,
+    "scheduledIndianLanguages": 22,
+    "operatingDomains": 65
+  },
+  "policy": "Catalog availability is not the same as customer-specific production readiness. Connected deployments must pass the asset readiness gate and voice deployments must pass language/provider acceptance evidence."
+}
