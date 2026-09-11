@@ -1,0 +1,34 @@
+[
+  {
+    "id": "aws-credit",
+    "title": "Request AWS hackathon promo credits",
+    "deadline": "2026-09-11T12:00:00-07:00",
+    "status": "not_started",
+    "blocker": "Requires signed-in AWS/Devpost participant account",
+    "last_contact": null
+  },
+  {
+    "id": "demo-video",
+    "title": "Record public QuietOps demo video",
+    "deadline": "2026-09-14T17:00:00-07:00",
+    "status": "blocked",
+    "blocker": "Need verified Bedrock-backed run first",
+    "last_contact": null
+  },
+  {
+    "id": "partner-followup",
+    "title": "Follow up with pilot partner about review date",
+    "deadline": "2026-09-09T17:00:00-04:00",
+    "status": "waiting",
+    "blocker": "Recipient name is intentionally absent from demo data",
+    "last_contact": "2026-08-30"
+  },
+  {
+    "id": "docs",
+    "title": "Finish architecture diagram and README checks",
+    "deadline": "2026-09-10T17:00:00-04:00",
+    "status": "in_progress",
+    "blocker": null,
+    "last_contact": null
+  }
+]

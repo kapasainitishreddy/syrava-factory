@@ -4,10 +4,10 @@ import { workflows, workflowCount, getWorkflow } from '../packages/workflow-cata
 import { agents, agentCount, getAgent } from '../packages/agent-catalog/index.mjs';
 
 test('Factory exposes all runtime assets without duplication', () => {
-  assert.equal(workflowCount, 300);
-  assert.equal(agentCount, 50);
-  assert.equal(new Set(workflows.map((item) => item.id)).size, 300);
-  assert.equal(new Set(agents.map((item) => item.id)).size, 50);
+  assert.equal(workflowCount, 360);
+  assert.equal(agentCount, 60);
+  assert.equal(new Set(workflows.map((item) => item.id)).size, 360);
+  assert.equal(new Set(agents.map((item) => item.id)).size, 60);
 });
 
 test('catalog lookup returns source-linked assets', () => {
