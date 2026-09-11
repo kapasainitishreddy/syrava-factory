@@ -9,10 +9,20 @@ import re
 
 TRUSTED_BASE_URL = "https://api.heycall-e.com"
 E164 = re.compile(r"^\+[1-9]\d{7,14}$")
+MAX_GOAL_CHARS = 500
 
 
 def mask_phone(phone: str) -> str:
     return phone[:3] + "*" * max(0, len(phone) - 7) + phone[-4:]
+
+
+def normalize_goal(goal: str) -> str:
+    normalized = " ".join(goal.split())
+    if not normalized:
+        raise SystemExit("goal must contain a concrete follow-up purpose")
+    if len(normalized) > MAX_GOAL_CHARS:
+        raise SystemExit(f"goal must be {MAX_GOAL_CHARS} characters or fewer")
+    return normalized
 
 
 def parse_args() -> argparse.Namespace:
@@ -27,7 +37,7 @@ def parse_args() -> argparse.Namespace:
 def build_task(goal: str) -> str:
     return (
         "You are making a short follow-up call on behalf of the user. "
-        f"Goal: {goal.strip()}\n"
+        f"Goal: {goal}\n"
         "State that you are an AI calling on the user's behalf. Ask only what is necessary for the stated goal. "
         "Do not agree to purchases, contracts, medical/legal/financial decisions, or disclose secrets. "
         "If the recipient requests a consequential decision, say the user must review it and end with a concise summary."
@@ -39,13 +49,15 @@ def main() -> int:
     phone = args.phone.strip()
     if not E164.match(phone):
         raise SystemExit("phone must be valid E.164, for example +12025550123")
+    goal = normalize_goal(args.goal)
 
-    request_key = hashlib.sha256(f"{phone}|{args.goal.strip()}".encode()).hexdigest()[:24]
+    request_key = hashlib.sha256(f"{phone}|{goal}".encode()).hexdigest()[:24]
+    task = build_task(goal)
     preview = {
         "mode": "live" if args.execute else "preview",
         "phone_masked": mask_phone(phone),
-        "goal": args.goal.strip(),
-        "task": build_task(args.goal),
+        "goal": goal,
+        "task": task,
         "idempotency_key": f"callback-clerk-{request_key}",
         "creates_phone_call": bool(args.execute),
     }
@@ -67,7 +79,7 @@ def main() -> int:
 
     client = CalleClient(api_key=api_key, base_url=TRUSTED_BASE_URL)
     result = client.calls.create_and_wait(
-        task=build_task(args.goal),
+        task=task,
         recipients=[{"phones": [phone], "region": "US", "locale": "en-US"}],
         metadata={"workflow_type": "callback_clerk", "request_key": request_key},
         idempotency_key=f"callback-clerk-{request_key}",
